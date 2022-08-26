@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        #storages {
+            width: 100%;
+            height: 100%;
+            table-layout: fixed;
+        }
+        #filters {
+            text-align: center;
+        }
+        #createStorage {
+            text-align: center;
+        }
+        .title > h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+        table thead {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #454d55;
+        }
+        #createStorage a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        table tbody a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #storages td {
+            padding: 0;
+        }
+        #filters input {
+            color: #000;
+            width: 100%;
+        }
+        #storages td:first-child,
+        #storages td:nth-child(7),
+        #storages td:nth-child(8){
+            width: 60px;
+        }
+        #storages td:nth-child(2),
+        #storages td:nth-child(3),
+        #storages td:nth-child(4) {
+            width: 100px;
+        }
+        #storages td:nth-child(10) {
+            width: 75px;
+        }
+        #storages td:nth-child(12),
+        #storages td:nth-child(13) {
+            width: 82px;
+        }
+        #filters td {
+            padding: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: #eee !important;
+                background: #121212 !important;
+            }
+
+            body a {
+                color: #FFFFFF !important;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block title %}Upload file{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div class="title">
+                <h1>SRN - STORAGE INTERFACE</h1>
+            </div>
+
+            <div id="createStorage">
+                <a href="#">Create Storage</a>
+            </div>
+
+            <br>
+            <form action="{{ path('do-upload') }}" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="token" value="{{ csrf_token('upload') }}" />
+
+                <div>
+                    <label for="myfile">File to upload:</label>
+                    <input type="file" name="myfile" id="myfile">
+                </div>
+
+                <button type="submit">Send</button>
+
+            </form>
+{#            <table id="storages" border="1" style="border-collapse:collapse; text-align: center">#}
+{#                <thead>#}
+{#                <tr id="filters">#}
+{#                    <td><label for="idSearch"></label><input id="idSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="srnCodeSearch"></label><input id="srnCodeSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="sapCodeSearch"></label><input id="sapCodeSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="plantCodeSearch"></label><input id="plantCodeSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="storageTypeSearch"></label><input id="storageTypeSearch" type="text" placeholder=".."></td>#}
+{#                    <td><label for="descriptionSearch"></label><input id="descriptionSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="sellingSearch"></label><input id="sellingSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="statusSearch"></label><input id="statusSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="countriesSearch"></label><input id="countriesSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="countryIdSearch"></label><input id="countryIdSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="platformsAssociatedSearch"></label><input id="platformsAssociatedSearch" type="text" placeholder="..."></td>#}
+{#                    <td><label for="companySearch"></label><input id="companySearch" type="text" placeholder="..."></td>#}
+{#                    <td></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>ID</td>#}
+{#                    <td>SRN Code</td>#}
+{#                    <td>SAP Code</td>#}
+{#                    <td>Plant Code</td>#}
+{#                    <td>Type</td>#}
+{#                    <td>Description</td>#}
+{#                    <td>Selling</td>#}
+{#                    <td>Status</td>#}
+{#                    <td>Countries</td>#}
+{#                    <td>Country location</td>#}
+{#                    <td>Platforms</td>#}
+{#                    <td>Company</td>#}
+{#                    <td>Actions</td>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                    <tr>#}
+{#                        <td id="id">ascas</td>#}
+
+{#                        <td>#}
+{#                            <a href="#">Details</a>#}
+{#                        </td>#}
+{#                    </tr>#}
+{#                </tbody>#}
+{#            </table>#}
+        </div>
+    </div>
+{% endblock %}
